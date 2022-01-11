@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ConfigProvider } from "antd";
+import viVN from "antd/lib/locale-provider/vi_VN";
+import Admin from "./page/admin";
+import Home from "./page/home";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider locale={viVN}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/Home" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    </ConfigProvider>
   );
-}
+};
 
 export default App;
